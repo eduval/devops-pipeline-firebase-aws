@@ -178,7 +178,7 @@ sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm
 ```
 
 ## 🧰 Configure Disk and Swap Space
-# ➕ Add 1 GB Swap File
+### ➕ Add 1 GB Swap File
 ```bash
 sudo fallocate -l 1G /swapfile_extend_1GB
 sudo chmod 600 /swapfile_extend_1GB
@@ -188,7 +188,7 @@ sudo swapon /swapfile_extend_1GB
 - This adds virtual memory (swap) for when RAM is full.
 - Prevents Jenkins crashes under heavy load.
 
-# 📁 Extend /tmp Directory
+### 📁 Extend /tmp Directory
 ```bash
 sudo mount -o remount,size=5G /tmp/
 ```
