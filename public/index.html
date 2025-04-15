@@ -1,0 +1,171 @@
+<!-- 
+
+Author: Washington Valencia
+Instructor: Washington Valencia
+
+OVERVIEW
+==========================================
+Kelowna Wine Trails and Tours offers group tours of the Kelowna area wineries. Groups can sign up at the company’s website. For the tours, the company charges $50 per person. However, the company offers discounts for larger group sizes. The discount rate larger groups are as follows:
+
+• 5-10 people: 10% discount per group member.
+• 11-24 people: 20% discount per group member.
+• 25+ people: 25% discount per group member.
+
+
+ENTER STUDENT INFORMATION HERE 
+==========================================
+CCTB project DevOps course
+STUDENT NAME: 
+STUDENT ID:
+SQAC114
+==========================================
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <meta name="keywords" content="Kelowna, Wine, Tours, discount, trails">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <style type="text/css">
+      html {
+         background: url(images/bg_image1.png) no-repeat center center fixed;
+         background-size: cover;
+         height: 100%;
+         /* overflow: hidden; */
+      }
+
+      /*body{
+		background-color: #ccdde1;
+	} */
+      table,
+      td {
+         border: 1px solid black;
+         border-collapse: collapse;
+         padding: 10px;
+         background-color: #adbf9e;
+      }
+
+      .layout {
+         border: 0px;
+         /*border-collapse: collapse; */
+         padding: 10px;
+         background-color: inherit;
+      }
+
+      h1,
+      h2 {
+         text-align: center;
+      }
+
+      #advice {
+         display: none;
+      }
+   </style>
+	 <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+ 
+    <script>
+        /* Add "https://api.ipify.org?format=json" to 
+        get the IP Address of user*/
+
+	    
+var hostname = window. location. hostname;
+	    
+        $(document).ready(()=>{
+            $.getJSON("https://api.ipify.org?format=json",
+            function (data) {
+ 
+                // Displayin IP address on screen
+                $("#gfg").html(hostname);
+            })
+        });
+    </script>
+   <title>DevOps Bonus Project - CCTB</title>
+</head>
+
+<body>
+   <img src="images/bee2.gif" id="bee" style="position: absolute; left: -150; top: 0px;
+            visibility:hidden;" alt="Flying bee" height="179" width="144" />
+
+   <h1> Kelowna Wine Trails and Tours</h1>
+   <h3> Student name / email </h3>
+	<p id="gfg"></p>
+   <hr size="1" color="#b6bcbb"> <br />
+
+   <div class="content" align="left">
+      <table class="layout">
+         <tr>
+            <td class="layout">
+               <form>
+                  <table border="0">
+                     <tr valign="center">
+                        <td>
+                           <h3>Group Discounts</h3>
+                           <ul>
+                              <li>Daily Rate: $50 per person</li>
+                              <li>5-10 people: 10% discount</li>
+                              <li>11-24 people: 20% discount</li>
+                              <li>25+ people: 25% discount</li>
+                           </ul>
+                        </td>
+
+                        <td valign="top">
+                           <h3> Group Members</h3>
+                           <p>
+                              <input type="button" class="buttons" id="addMemberBtn" value="Add Member" />
+                              <input type="button" class="buttons" id="deleteMemberBtn" value="Delete Member" />
+                              <input type="button" class="buttons" id="sortMemberListBtn" value="Sort Member List" />
+
+                           </p>
+
+                           <table border="0">
+                              <tr>
+                                 <td>
+                                    <select name="group" id="members" size="13" style="width: 150px">
+
+                                    </select>
+                                 </td>
+
+                                 <td valign="top">Last name<br />
+                                    <input type="text" name="lastname" id="lastname" size="30" /><br />
+                                    First name<br />
+                                    <input type="text" name="firstname" id="firstname" size="30" /><br />
+                                 </td>
+                              </tr>
+                           </table>
+
+
+                           <p>
+                              How many people are in your group?
+                              <input type="text" name="Group Size" id="GroupSize" size="5" value="0" />
+                           </p>
+                           <p> Your group rate is $<input type="text" name="Discounted Rate" id="discRate" size="6"
+                                 value="" readonly="readonly" class="total" /> per person.</p>
+
+                        </td>
+
+                     </tr>
+                  </table>
+               </form>
+            </td>
+            <td class="layout">
+               <div align="right"> <span id="advice"><em>Like this bee, be sure to stop <br /> and smell the
+                        flowers!</em></span></div>
+            </td>
+         </tr>
+      </table>
+   </div>
+
+   <div class="footer" align="center">
+      <div style="padding-left: 20px; padding-top: 35px;" class="copy">
+         Copyright &copy; 2021. Kelowna Wine Trails and Tours. All rights reserved
+      </div>
+   </div>
+
+   <script src="script/script.js"></script>
+
+</body>
+
+</html>
