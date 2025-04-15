@@ -10,7 +10,7 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins installed n
 The test application is deployed via Firebase Hosting:
 
 👉 **KelownaTrails Web App**  
-(Replace with your actual URL)
+([Link to Kelowna Trails Web App](https://devops-assignmet-8-production.web.app/))
 
 # AWS Jenkins Selenium Demo
 
@@ -118,16 +118,25 @@ pipeline {
 ```bash
 sudo dnf update -y
 ```
+-	Updates all installed packages to the latest versions.
+-	Improves security and compatibility.
+
 # Install Node.js & Firebase CLI
 
 ```bash
 sudo dnf install -y nodejs npm
 sudo npm install -g firebase-tools --no-optional
 ```
+- -g: global install so it's accessible from anywhere.
+- --no-optional: avoids installing OS-specific optional dependencies (e.g., fsevents for macOS).
+
 # Install Java and Git
 ```bash
 sudo dnf install -y java-21-amazon-corretto git
 ```
+- Jenkins is a Java-based application. Java 21 is supported and stable.
+- Git is used to clone and pull code from GitHub.
+
 # Install Jenkins
 ```bash
 sudo dnf install -y wget
@@ -136,6 +145,12 @@ sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
 sudo dnf install -y jenkins
 sudo systemctl enable --now jenkins
 ```
+What each command does:
+- wget downloads files (used to get the Jenkins repo config).
+- Adds Jenkins repo so dnf can find the Jenkins package.
+- Imports the GPG key to verify package integrity.
+- Installs and starts the Jenkins service.
+
 
 # Open Required Ports in EC2 Security Group
 - Port 22 (SSH)
@@ -152,8 +167,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Then install default plugins during setup.
 Add a Secret Text Credential with ID firebase-token.
 
----
-
 ## 🖥️ Google Chrome Installation (RHEL/CentOS/Amazon Linux)
 
 If you're using a RHEL-based system like Amazon Linux, install Google Chrome with:
@@ -163,6 +176,25 @@ sudo yum install -y wget
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sudo yum -y localinstall google-chrome-stable_current_x86_64.rpm
 ```
+
+## 🧰 Configure Disk and Swap Space
+# ➕ Add 1 GB Swap File
+```bash
+sudo fallocate -l 1G /swapfile_extend_1GB
+sudo chmod 600 /swapfile_extend_1GB
+sudo mkswap /swapfile_extend_1GB
+sudo swapon /swapfile_extend_1GB
+```
+- This adds virtual memory (swap) for when RAM is full.
+- Prevents Jenkins crashes under heavy load.
+
+# 📁 Extend /tmp Directory
+```bash
+sudo mount -o remount,size=5G /tmp/
+```
+- Jenkins and other tools use /tmp heavily.
+- Resizing prevents failures during builds or installations.
+
 ---
 ## 🧪 Testing Notes
 
